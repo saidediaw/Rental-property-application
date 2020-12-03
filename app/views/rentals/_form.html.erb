@@ -36,6 +36,16 @@
     <%= form.text_area :remarks %>
   </div>
 
+  <%= form.fields_for :stations do |station_form| %>
+   <%= station_form.label :railway %>
+   <%= station_form.text_field :railway %>
+   <%= station_form.label :station_name %>
+   <%= station_form.text_field :station_name %>
+   <%= station_form.label :walking_time %>
+   <%= station_form.number_field :walking_time %>
+   <%= station_form.hidden_field :_destroy %>
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -10,11 +10,14 @@ class RentalsController < ApplicationController
   # GET /rentals/1
   # GET /rentals/1.json
   def show
+    @rentals = Rental.find(params[:id])
+    @stations = @rental.stations
   end
 
   # GET /rentals/new
   def new
     @rental = Rental.new
+    2.times{@rental.stations.build}
   end
 
   # GET /rentals/1/edit
@@ -69,6 +72,6 @@ class RentalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rental_params
-      params.require(:rental).permit(:property, :rent, :address, :age, :remarks)
+      params.require(:rental).permit(:property, :rent, :address, :age, :remarks, stations_attributes: [:id, :railway, :station_name, :walking_time, :rental_id, :_destroy])
     end
 end

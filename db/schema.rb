@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_052118) do
 
   create_table "stations", force: :cascade do |t|
     t.string "railway"
-    t.string "station"
+    t.string "station_name"
     t.integer "walking_time"
     t.integer "rental_id"
     t.datetime "created_at", null: false

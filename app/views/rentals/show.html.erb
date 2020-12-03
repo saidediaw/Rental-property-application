@@ -25,5 +25,11 @@
   <%= @rental.remarks %>
 </p>
 
+<% @stations.each do |station| %>
+<p>Line <%= station.railway %> </p>
+<p>Station name: <%= station.station_name%></p>
+<p>Walking distance: <%= station.walking_time%></p>
+<% end %>
+
 <%= link_to 'Edit', edit_rental_path(@rental) %> |
 <%= link_to 'Back', rentals_path %>
