@@ -2,8 +2,7 @@
 
 <h1>Rentals</h1>
 
-<table>
-  <thead>
+<table id="customers">
     <tr>
       <th>Property</th>
       <th>Rent</th>
@@ -12,9 +11,6 @@
       <th>Remarks</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
-
-  <tbody>
     <% @rentals.each do |rental| %>
       <tr>
         <td><%= rental.property %></td>
@@ -27,9 +23,12 @@
         <td><%= link_to 'Destroy', rental, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
 </table>
 
 <br>
 
 <%= link_to 'New Rental', new_rental_path %>
+
+<footer>
+  <p>Copyright: Edem 2020<br>
+</footer>

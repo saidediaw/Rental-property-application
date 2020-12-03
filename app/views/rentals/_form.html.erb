@@ -12,38 +12,27 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :property %>
-    <%= form.text_field :property %>
+    <%= form.text_field :property, placeholder: 'Property Name' %>
   </div>
 
   <div class="field">
-    <%= form.label :rent %>
-    <%= form.number_field :rent %>
+    <%= form.number_field :rent, placeholder: 'Rent' %>
   </div>
 
   <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
+    <%= form.text_field :address, placeholder: 'Address' %>
   </div>
 
   <div class="field">
-    <%= form.label :age %>
-    <%= form.number_field :age %>
+    <%= form.number_field :age, placeholder: 'Building Age' %>
   </div>
 
   <div class="field">
-    <%= form.label :remarks %>
-    <%= form.text_area :remarks %>
+    <%= form.text_area :remarks, placeholder: 'Remarks' %>
   </div>
 
   <%= form.fields_for :stations do |station_form| %>
-   <%= station_form.label :railway %>
-   <%= station_form.text_field :railway %>
-   <%= station_form.label :station_name %>
-   <%= station_form.text_field :station_name %>
-   <%= station_form.label :walking_time %>
-   <%= station_form.number_field :walking_time %>
-   <%= station_form.hidden_field :_destroy %>
+   <%= render "station_form", f: station_form %>
   <% end %>
 
   <div class="actions">
