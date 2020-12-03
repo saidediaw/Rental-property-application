@@ -24,6 +24,7 @@ class RentalsController < ApplicationController
 
   # GET /rentals/1/edit
   def edit
+    @rental.stations.build
   end
 
   # POST /rentals

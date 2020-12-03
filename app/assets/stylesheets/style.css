@@ -29,3 +29,8 @@ footer {
    color: black;
    text-align: center;
 }
+
+.main-form {
+  border-bottom:1px solid black;
+  margin-bottom:10px;
+}
