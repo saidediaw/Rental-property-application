@@ -11,7 +11,7 @@ class RentalsController < ApplicationController
   # GET /rentals/1.json
   def show
     @rentals = Rental.find(params[:id])
-    @stations = @rental.stations
+    @stations = @rental.stations.order(walking_time: :asc)
   end
 
   # GET /rentals/new
