@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+<h2>Property Detail</h2>
+<div class="main-form">
+<p>
+  <strong>Property:</strong>
+  <%= @rental.property %>
+</p>
+
+<p>
+  <strong>Rent:</strong>
+  <%= @rental.rent %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @rental.address %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @rental.age %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @rental.remarks %>
+</p>
+</div>
+<% i = 0 %>
+<% @stations.each do |station| %>
+<h3>Name of Railway Line <%= i+=1 %></h3>
+<p><b>Line</b> <%= station.railway %> </p>
+<p><b>Station name:</b> <%= station.station_name%></p>
+<p><b>Walking distance:</b> <%= station.walking_time%> min/mins</p>
+<% end %>
+
+<%= link_to 'Edit', edit_rental_path(@rental) %> |
+<%= link_to 'Back', rentals_path %>
+
+<footer>
+  <p>Copyright: Edem 2020<br>
+</footer>

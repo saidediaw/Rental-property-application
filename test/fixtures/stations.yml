@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  railway: MyString
+  station: MyString
+  walking_time: 1
+  rental: one
+
+two:
+  railway: MyString
+  station: MyString
+  walking_time: 1
+  rental: two

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rentals</h1>
+
+<table id="customers">
+    <tr>
+      <th>Property</th>
+      <th>Rent</th>
+      <th>Address</th>
+      <th>Age</th>
+      <th>Remarks</th>
+      <th colspan="3"></th>
+    </tr>
+    <% @rentals.each do |rental| %>
+      <tr>
+        <td><%= rental.property %></td>
+        <td><%= rental.rent %></td>
+        <td><%= rental.address %></td>
+        <td><%= rental.age %></td>
+        <td><%= rental.remarks %></td>
+        <td><%= link_to 'Show', rental %></td>
+        <td><%= link_to 'Edit', edit_rental_path(rental) %></td>
+        <td><%= link_to 'Destroy', rental, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+</table>
+
+<br>
+
+<%= link_to 'New Rental', new_rental_path %>
+
+<footer>
+  <p>Copyright: Edem 2020<br>
+</footer>
