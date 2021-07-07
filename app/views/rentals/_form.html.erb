@@ -1,4 +1,12 @@
-<%= form_with(model: rental, local: true) do |form| %>
+<%= form_with(model: @rental, local: true) do |form| %>
+<% v = 0 %>
+<% @rental.stations.each do |x| %>
+<% if x.station.present? %>
+  <% v += 1 %>
+ <% end %>
+<% end %>
+<h3>This rental has <%=v%> nearest station(s)</h3>
+
   <% if rental.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(rental.errors.count, "error") %> prohibited this rental from being saved:</h2>
@@ -10,33 +18,68 @@
       </ul>
     </div>
   <% end %>
-<div class="main-form">
-  
-  <div class="field">
-    <%= form.text_field :property, placeholder: 'Property Name' %>
-  </div>
 
-  <div class="field">
-    <%= form.number_field :rent, placeholder: 'Rent' %>
-  </div>
+<hr>
 
+<h2>Register rental</h2>
   <div class="field">
-    <%= form.text_field :address, placeholder: 'Address' %>
-  </div>
+      <%= form.label :rental_name, "rental name"  %>
+      <%= form.text_field :rental_name %>
+    </div>
 
-  <div class="field">
-    <%= form.number_field :age, placeholder: 'Building Age' %>
-  </div>
+    <div class="field">
+      <%= form.label :rent, "Rent"  %>
+      <%= form.number_field :rent %>
+    </div>
 
-  <div class="field">
-    <%= form.text_area :remarks, placeholder: 'Remarks' %>
-  </div>
-</div>
-  <%= form.fields_for :stations do |station_form| %>
-   <%= render "station_form", f: station_form %>
-  <% end %>
+    <div class="field">
+      <%= form.label :address, "Address"%>
+      <%= form.text_field :address %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+    <div class="field">
+      <%= form.label :age, "Building's age"%>
+      <%= form.number_field :age %>
+    </div>
+
+    <div class="field">
+      <%= form.label :remark, "Remarks"%>
+      <%= form.text_area :remark %>
+    </div>
+
+    <hr>
+      <% n = 0 %>
+  <%= form.fields_for :stations do |g| %>
+      <h2>Nearest station <%= n += 1 %></h2>
+      <div class="field">
+        <div>
+          <%= g.label :line, "Line name"%>
+        </div>
+        <div>
+          <%= g.text_field :line %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div>
+          <%= g.label :station, "Station name"  %>
+        </div>
+        <div>
+          <%= g.text_field :station %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div>
+          <%= g.label :time, "By walk"  %>
+        </div>
+        <div>
+         <%= g.text_field :time %>min
+        </div>
+      </div>
+       <% end %>
+
+       <div class="actions">
+      <%= form.submit value:"Register"%>
+      </div>
+      <% end %>

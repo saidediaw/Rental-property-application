@@ -1,42 +1,69 @@
+<h1>Rental Details</h1>
+<br>
+
 <p id="notice"><%= notice %></p>
-<h2>Property Detail</h2>
-<div class="main-form">
-<p>
-  <strong>Property:</strong>
-  <%= @rental.property %>
-</p>
 
-<p>
-  <strong>Rent:</strong>
-  <%= @rental.rent %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @rental.address %>
-</p>
-
-<p>
-  <strong>Age:</strong>
-  <%= @rental.age %>
-</p>
-
-<p>
-  <strong>Remarks:</strong>
-  <%= @rental.remarks %>
-</p>
-</div>
-<% i = 0 %>
-<% @stations.each do |station| %>
-<h3>Name of Railway Line <%= i+=1 %></h3>
-<p><b>Line</b> <%= station.railway %> </p>
-<p><b>Station name:</b> <%= station.station_name%></p>
-<p><b>Walking distance:</b> <%= station.walking_time%> min/mins</p>
+<% n = 0 %>
+<% @rental.stations.each do |x| %>
+	<% if x.station.present? %>
+		<% n += 1 %>
+	<% end %>
 <% end %>
+<h3>This rental has <%=n %> nearest station(s)</h3>
+
+<hr>
+
+<p>
+  <strong>Rental's name:</strong>
+<%= @rental.rental_name %>
+</p>
+
+<p>
+ <strong>Rent:</strong>
+ <%= @rental.rent %>
+</p>
+
+  <p>
+ <strong>Address:</strong>
+ <%= @rental.address %>
+</p>
+
+<p>
+ <strong>Building's age:</strong>
+ <%= @rental.age %>
+</p>
+
+<p>
+ <strong>Remarks:</strong>
+ <%= @rental.remark %>
+</p>
+
+<hr>
+ <div>
+<%n = 0%>
+<% @rental.stations.each do |station|%>
+    <% if station.station.present? %>
+    <h2>Nearest Station<%= n += 1 %></h2>
+
+  <p>
+    <strong>Line:</strong>
+    <%= station.line %>
+  </p>
+
+  <p>
+    <strong> Station:</strong>
+    <%= station.station %>
+  </p>
+  <p>
+    <strong>By walk:</strong>
+    <%= station.time %>
+  </p>
+  <% end %>
+  <% end %>
+</div>
 
 <%= link_to 'Edit', edit_rental_path(@rental) %> |
 <%= link_to 'Back', rentals_path %>
-
 <footer>
-  <p>Copyright: Edem 2020<br>
+  <p>Copyright: Edem 2021<br>
 </footer>

@@ -1,5 +1,5 @@
 class Rental < ApplicationRecord
-  validates :property, presence: true
+  validates :rental_name, presence: true
   validates :rent, presence: true
   validates :address, presence: true
   validates :age, presence: true
